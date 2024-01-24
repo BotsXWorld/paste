@@ -21,10 +21,27 @@
     <script>
         function submitCode() {
             var code = document.getElementById("code").value;
-            document.getElementById("latestCode").innerText = code;
-            // Here, you would typically send the code to the server for storage.
-            // A server-side language and database would be needed for permanent storage.
+
+            // Send the code to the server
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ code })
+            })
+            .then(response => response.text())
+            .then(message => console.log(message))
+            .catch(error => console.error('Error:', error));
         }
+
+        // Load latest code on page load
+        window.onload = function() {
+            fetch('/latest')
+                .then(response => response.text())
+                .then(code => document.getElementById("latestCode").innerText = code)
+                .catch(error => console.error('Error:', error));
+        };
     </script>
 
 </body>
