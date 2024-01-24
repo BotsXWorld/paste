@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Sharing Platform</title>
+</head>
+<body>
+
+    <h1>Code Sharing Platform</h1>
+
+    <label for="code">Paste your code here:</label><br>
+    <textarea id="code" rows="10" cols="50"></textarea><br>
+
+    <button onclick="submitCode()">Submit Code</button>
+
+    <h2>Latest Code:</h2>
+    <pre id="latestCode"></pre>
+
+    <script>
+        function submitCode() {
+            var code = document.getElementById("code").value;
+            document.getElementById("latestCode").innerText = code;
+            // Here, you would typically send the code to the server for storage.
+            // A server-side language and database would be needed for permanent storage.
+        }
+    </script>
+
+</body>
+</html>
